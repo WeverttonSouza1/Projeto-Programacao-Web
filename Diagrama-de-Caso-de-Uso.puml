@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Visitante" as UC_Guest
+actor "Usuário Autenticado" as UC_User
+actor "Vendedor" as UC_Seller
+actor "Administrador" as UC_Admin
+
+UC_User <|-- UC_Seller
+
+rectangle "Marketplace de Itens Digitais" {
+    (Cadastrar-se / Login) as UC1
+    (Listar e Pesquisar Produtos) as UC2
+    (Ver Detalhes do Produto) as UC3
+    (Gerenciar Carrinho de Compras) as UC4
+    (Finalizar Compra / Checkout) as UC5
+    (Gerenciar Meus Anúncios) as UC6
+    (Avaliar Vendedor) as UC7
+    (Gerenciar Denúncias e Usuários) as UC8
+}
+
+UC_Guest --> UC1
+UC_Guest --> UC2
+UC_Guest --> UC3
+UC_Guest --> UC4
+
+UC_User --> UC4
+UC_User --> UC5
+UC_User --> UC7
+
+UC_Seller --> UC6
+
+UC_Admin --> UC8
+@enduml
