@@ -12,4 +12,4 @@ O sistema busca resolver a fragmentação do mercado de itens virtuais, oferecen
 
 ## Modelagem do Sistema
 ### Diagrama de Casos de Uso
-![Link]
+![image alt](https://github.com/WeverttonSouza1/Projeto-Programacao-Web/blob/52fc00e4596236ac76d9a7d2ac05a6af3b2e47e8/Imagens/Diagrama-de-Caso-de-Uso.png)
