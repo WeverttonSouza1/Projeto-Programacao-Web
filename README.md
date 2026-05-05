@@ -6,10 +6,13 @@ O **Schutz** é uma plataforma web voltada para a comercialização de ativos di
 O sistema busca resolver a fragmentação do mercado de itens virtuais, oferecendo uma interface intuitiva e categorias organizadas por tipo de jogo ou utilitário.
 
 ## Tecnologias Previstas
-*   **Front-end:** HTML, CSS e JavaScript (com planos para React.js).
+*   **Front-end:** Next.js (React), Tailwind CSS e JavaScript.
 *   **Back-end:** Node.js (API REST).
 *   **Banco de Dados:** PostgreSQL.
 
 ## Modelagem do Sistema
 ### Diagrama de Casos de Uso
 ![image alt](https://github.com/WeverttonSouza1/Projeto-Programacao-Web/blob/52fc00e4596236ac76d9a7d2ac05a6af3b2e47e8/Imagens/Diagrama-de-Caso-de-Uso.png)
+
+### Prototipo de interfaces em baixa fidelidade
+https://www.figma.com/design/HzTkVAauzDbXRDVsE5MqeP/Projeto-de-Desenvolvimento-Web?node-id=0-1&t=0w3fwY9MkLDV6PKE-1
