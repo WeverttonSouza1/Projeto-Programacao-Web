@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ThemeToggle from './ThemeToggle';
 import Link from 'next/link';
 
 const geistSans = Geist({
@@ -24,12 +25,19 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body>
+
         <nav>
           <Link href="/" target="_self" rel="prev">Home</Link>
           <Link href="/carrinho" target="_self" >Carrinho</Link>
           <Link href="/dashboard" target="_self" rel="next">Meus Anúncios</Link>
           <Link href="/login" target="_self" rel="next">Entrar</Link>
         </nav>
+
+          <center>
+            <ul type = "none">
+              <li><ThemeToggle/></li>
+            </ul>
+          </center>
 
         {children}
 
