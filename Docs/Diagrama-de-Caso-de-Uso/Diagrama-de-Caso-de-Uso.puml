@@ -1,35 +1,65 @@
 @startuml
 left to right direction
 skinparam packageStyle rectangle
+skinparam actorStyle awesome
 
-actor Visitante as UC_Guest
-actor Usuário Autenticado as UC_User
-actor Vendedor as UC_Seller
-actor Administrador as UC_Admin
+actor "Visitante" as UC_Guest
+actor "Usuário Autenticado" as UC_User
+actor "Vendedor" as UC_Seller
+actor "Administrador" as UC_Admin
 
-UC_User -- UC_Seller
+UC_User --|> UC_Guest
+UC_Seller --|> UC_User
 
-rectangle Marketplace de Itens Digitais {
-    (Cadastrar-se  Login) as UC1
+rectangle "Schutz Marketplace" {
+    
+    ' --- Casos de Uso do Visitante ---
+    (Cadastrar-se / Fazer Login) as UC1
     (Listar e Pesquisar Produtos) as UC2
     (Ver Detalhes do Produto) as UC3
     (Gerenciar Carrinho de Compras) as UC4
-    (Finalizar Compra  Checkout) as UC5
-    (Gerenciar Meus Anúncios) as UC6
-    (Avaliar Vendedor) as UC7
-    (Gerenciar Denúncias e Usuários) as UC8
+    (Visualizar Perfil do Vendedor) as UC5
+
+    ' --- Casos de Uso do Usuário Autenticado (Comprador) ---
+    (Finalizar Compra / Checkout) as UC6
+    (Fazer Pergunta no Anúncio) as UC7
+    (Conversar no Chat Pós-Venda) as UC8
+    (Solicitar Exclusão de Conta) as UC9
+
+    ' --- Casos de Uso Exclusivos do Vendedor ---
+    (Gerenciar Meus Anúncios) as UC10
+    (Responder Perguntas no Anúncio) as UC11
+
+    ' --- Casos de Uso do Administrador (Moderação e Finanças) ---
+    (Validar e Aprovar Anúncio) as UC12
+    (Gerenciar Denúncias e Usuários) as UC13
+    (Fazer Mediação de Compras) as UC14
+    (Validar e Aprovar Saque) as UC15
+    (Banir Usuários / Remover Anúncios) as UC16
 }
 
+' Associações do Visitante
 UC_Guest -- UC1
 UC_Guest -- UC2
 UC_Guest -- UC3
 UC_Guest -- UC4
+UC_Guest -- UC5
 
-UC_User -- UC4
-UC_User -- UC5
+' Associações do Usuário Autenticado (Ganha automaticamente as do Visitante)
+UC_User -- UC6
 UC_User -- UC7
+UC_User -- UC8
+UC_User -- UC9
 
-UC_Seller -- UC6
+' Associações do Vendedor (Ganha automaticamente as de Usuário e Visitante)
+UC_Seller -- UC10
+UC_Seller -- UC11
 
-UC_Admin -- UC8
+' Associações do Administrador 
+UC_Admin -- UC12
+UC_Admin -- UC13
+UC_Admin -- UC14
+UC_Admin -- UC15
+UC_Admin -- UC16
+
 @enduml
