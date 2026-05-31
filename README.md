@@ -14,5 +14,8 @@ O sistema busca resolver a fragmentação do mercado de itens virtuais, oferecen
 ### Diagrama de Casos de Uso
 ![image alt](https://github.com/WeverttonSouza1/Projeto-Programacao-Web/blob/f8b686a2eae5032c25f80c25718a7fb82f89766e/Docs/Diagrama-de-Caso-de-Uso/Diagrama-de-Caso-de-Uso.png)
 
+### Diagrama de Classes
+![image alt](https://github.com/WeverttonSouza1/Projeto-Programacao-Web/blob/1c7ff29f2a8232ae98459b53647fcf856ee7bb5e/Docs/Diagrama-de-Caso-de-Uso/Diagrama-de-Classes.png)
+
 ### Prototipo de interfaces em baixa fidelidade
 https://www.figma.com/design/HzTkVAauzDbXRDVsE5MqeP/Projeto-de-Desenvolvimento-Web?node-id=0-1&t=0w3fwY9MkLDV6PKE-1
