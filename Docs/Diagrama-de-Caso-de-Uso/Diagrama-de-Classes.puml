@@ -1,0 +1,210 @@
+@startuml
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam monochrome false
+skinparam packageStyle rectangle
+
+package "Tipos e Controles (Enums)" {
+    enum UserRole {
+        COMUM
+        ADMIN
+    }
+    enum UserStatus {
+        ATIVO
+        BANIDO
+        AGUARDANDO_EXCLUSAO
+    }
+    enum ProductStatus {
+        AGUARDANDO_VALIDACAO
+        ATIVO
+        PAUSADO
+        REMOVIDO
+    }
+    enum PaymentStatus {
+        PENDENTE
+        APROVADO
+        RECUSADO
+        REEMBOLSADO
+    }
+    enum OrderStatus {
+        ABERTO
+        CONCLUIDO
+        EM_MEDIACAO
+        CANCELADO
+    }
+    enum WithdrawalStatus {
+        PENDENTE
+        APROVADO
+        RECUSADO
+    }
+    enum ReportStatus {
+        PENDENTE
+        RESOLVIDO
+    }
+}
+
+package "Núcleo de Usuários" {
+    class User {
+        + id: UUID
+        + name: String
+        + email: String
+        + password_hash: String
+        + role: UserRole
+        + status: UserStatus
+        + created_at: DateTime
+        + updated_at: DateTime
+    }
+
+    class UserBilling {
+        + user_id: UUID
+        + cpf_cnpj: String
+        + pix_key: String
+        + bank_name: String
+        + created_at: DateTime
+    }
+}
+
+package "Catálogo de Produtos" {
+    class Category {
+        + id: UUID
+        + name: String
+        + slug: String
+        + image_url: String
+        + created_at: DateTime
+    }
+
+    class Product {
+        + id: UUID
+        + seller_id: UUID
+        + category_id: UUID
+        + title: String
+        + description: String
+        + status: ProductStatus
+        + created_at: DateTime
+        + updated_at: DateTime
+    }
+
+    class ProductVariant {
+        + id: UUID
+        + product_id: UUID
+        + name: String
+        + price: Decimal
+        + stock: Integer
+    }
+
+    class ProductImage {
+        + id: UUID
+        + product_id: UUID
+        + image_url: String
+        + is_main: Boolean
+        + display_order: Integer
+    }
+
+    class ProductQuestion {
+        + id: UUID
+        + product_id: UUID
+        + buyer_id: UUID
+        + question_text: String
+        + answer_text: String
+        + created_at: DateTime
+        + answered_at: DateTime
+    }
+}
+
+package "Fluxo de Vendas e Operações" {
+    class CartItem {
+        + id: UUID
+        + user_id: UUID
+        + variant_id: UUID
+        + quantity: Integer
+        + created_at: DateTime
+    }
+
+    class Order {
+        + id: UUID
+        + buyer_id: UUID
+        + total_amount: Decimal
+        + payment_status: PaymentStatus
+        + order_status: OrderStatus
+        + created_at: DateTime
+        + updated_at: DateTime
+    }
+
+    class OrderItem {
+        + id: UUID
+        + order_id: UUID
+        + variant_id: UUID
+        + unit_price: Decimal
+        + quantity: Integer
+    }
+
+    class OrderChat {
+        + id: UUID
+        + order_id: UUID
+        + sender_id: UUID
+        + message: String
+        + created_at: DateTime
+    }
+
+    class Review {
+        + id: UUID
+        + order_id: UUID
+        + rating: Integer
+        + comment: String
+        + created_at: DateTime
+    }
+
+    class Withdrawal {
+        + id: UUID
+        + seller_id: UUID
+        + requested_amount: Decimal
+        + status: WithdrawalStatus
+        + admin_notes: String
+        + created_at: DateTime
+        + processed_at: DateTime
+    }
+
+    class Report {
+        + id: UUID
+        + reporter_id: UUID
+        + target_user_id: UUID
+        + target_product_id: UUID
+        + reason: String
+        + status: ReportStatus
+        + action_taken: String
+        + created_at: DateTime
+    }
+}
+
+' Relacionamentos e Multiplicidades
+
+' Usuários e Faturamento (1 para 1)
+User "1" *-- "1" UserBilling
+
+' Catálogo e Produtos
+User "1" -- "*" Product : "vende"
+Category "1" -- "*" Product : "classifica"
+Product "1" *-- "*" ProductVariant
+Product "1" *-- "*" ProductImage
+Product "1" *-- "*" ProductQuestion
+User "1" -- "*" ProductQuestion : "pergunta"
+
+' Carrinho de Compras
+User "1" *-- "*" CartItem
+ProductVariant "1" -- "*" CartItem
+
+' Pedidos, Itens e Fluxos
+User "1" -- "*" Order : "compra"
+Order "1" *-- "*" OrderItem
+ProductVariant "1" -- "*" OrderItem
+Order "1" *-- "*" OrderChat
+User "1" -- "*" OrderChat : "envia"
+Order "1" *-- "0..1" Review
+
+' Finanças e Auditoria Admin
+User "1" -- "*" Withdrawal : "solicita"
+User "1" -- "*" Report : "denuncia"
+User "0..1" -- "*" Report : "é alvo (usuário)"
+Product "0..1" -- "*" Report : "é alvo (produto)"
+
+@enduml
