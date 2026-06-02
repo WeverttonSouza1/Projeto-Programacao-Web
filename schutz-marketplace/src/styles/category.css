@@ -1,0 +1,245 @@
+.category-page {
+    max-width: 1200px;
+}
+
+.container-page {
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-bottom: 16px;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-family: 'work-sans', sans-serif;
+    font-size: 0.9em;
+    font-weight: 700;
+    color: #666;
+    margin-bottom: 20px;
+    background: transparent;
+    padding-right: 6000px;
+    box-shadow: none;
+}
+
+.breadcrumb a {
+    color: #4c288f; 
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: #ff6700; 
+}
+
+.breadcrumb .current {
+    color: #ff9d00;
+}
+
+body.dark .breadcrumb {
+    color: #aaa;
+}
+
+body.dark .breadcrumb a {
+    color: #a481e8; 
+}
+
+/* Barra de pesquisa superior */
+.search-header {
+    margin-bottom: 30px;
+}
+
+.search-wrapper {
+    position: relative;
+    max-width: 300px;
+}
+
+.game-filter {
+    width: 100%;
+    padding: 12px 15px;
+    padding-right: 40px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #1e1e1e;
+    color: #fff;
+    font-family: 'work-sans', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+body:not(.dark) .game-filter {
+    background: #f4f4f4;
+    border-color: #ddd;
+    color: #333;
+}
+
+.game-filter:focus {
+    border-color: #ff6700; 
+}
+
+.search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+}
+
+.conteiner-title {
+
+}
+
+.games-grid {
+    font-weight: 700;
+    display: grid;
+    margin-left: 10px;
+    margin-right: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 20px;
+    border: #000;
+}
+
+/* O Card de cada jogo */
+.game-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    cursor: pointer;
+}
+
+.game-card:hover {
+    transform: translateY(-5px); /* Efeito de levitar ao passar o mouse */
+    opacity: 0.9;
+}
+
+.game-image-wrapper {
+    aspect-ratio: 3 / 4;
+}
+
+body:not(.dark) .game-image-wrapper {
+    background: #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.game-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem preencher toda a capa sem deformar */
+}
+
+.game-name {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #e0e0e0;
+    text-align: center;
+    font-family: 'work-sans', sans-serif;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limita em exatas 2 linhas */
+    -webkit-box-orient: vertical;
+}
+
+body:not(.dark) .game-name {
+    color: #333;
+}
+
+
+
+
+.category-header-banner {
+    display: block;
+}
+
+.category-header-banner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+    border: 1px solid #e0e0e0;
+}
+
+body.dark .category-header-banner {
+    background: #2e2e2e;
+    border-color: #444;
+}
+
+.category-banner-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #f4f4f4;
+    padding: 5px;
+}
+
+body.dark .category-banner-img {
+    background: #1b1b1b;
+}
+
+.category-banner-info h1 {
+    margin: 0 0 5px 0;
+    font-size: 1.5em; 
+}
+
+.category-banner-info p {
+    margin: 0;
+    font-size: 0.95em;
+    color: #666;
+    font-family: 'work-sans', sans-serif;
+}
+
+body.dark .category-banner-info p {
+    color: #aaa;
+}
+
+/* Barra de Filtros */
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap; /* Em telas menores, os itens caem para a linha de baixo */
+}
+
+body.dark .filter-bar {
+    background: #2e2e2e;
+    border-color: #444;
+}
+
+.search-input {
+    flex: 1; /* O input de busca ocupa o espaço que sobrar */
+    min-width: 250px;
+    margin: 0; /* Remove a margem extra do seu form geral */
+}
+
+.sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'work-sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.9em;
+}
+
+.sort-select {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+}
