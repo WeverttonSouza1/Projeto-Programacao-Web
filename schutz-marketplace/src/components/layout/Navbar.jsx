@@ -4,8 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import LoginModal from "../auth/LoginModal";
 import RegisterModal from "../auth/RegisterModal";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Navbar() {
+    const { user, logout } = useAuth(); // HOOK DE AUTENTICAÇÃO
     const [open, setOpen] = useState(false);
     const [loginOpen, setLoginOpen] = useState(false);
     const [registerOpen, setRegisterOpen] = useState(false);
@@ -40,7 +42,6 @@ export default function Navbar() {
 
     return (
         <header className="schutz-navbar">
-            {/* Falta o simbolodo */}
             <div className="schutz-nav-left">
                 <Link href="/" className="schutz-logo">
                     <span className="text-logo">SCHUTZ</span>
@@ -84,14 +85,27 @@ export default function Navbar() {
                 </nav>
 
                 <div className="schutz-nav-actions">
-                    <Link
-                        href="/anunciar"
-                        className="schutz-btn-anunciar"
-                    >
-                        Anunciar
-                    </Link>
+
+                        {user ? (
+                            <Link
+                                href="/anunciar"
+                                className="schutz-btn-anunciar"
+                            >
+                                Anunciar
+                            </Link>
+                        ) : (
+                            <>
+                                <button
+                                    onClick={() => setLoginOpen(true)}
+                                    className="schutz-btn-anunciar"
+                                >
+                                    Anunciar
+                                </button>
+                            </>
+                        )}
+
                     
-                    {/* Carrinho  Icon*/}
+                    {/* Carrinho Icon */}
                     <Link
                         href="/carrinho"
                         className="schutz-carrinho"
@@ -134,26 +148,52 @@ export default function Navbar() {
                             />
                         </svg>
                     </button>
-                    {/* Menu*/}
+                    
+                    {/* Menu Hamburguer Lateral/Flutuante */}
                     <div
                         ref={menuRef}
                         id="external-menu"
                         className={open ? "external-menu open" : "external-menu"}
                     >
+                        {/* adicionar div com foto de perfil no menu*/}
+                        {!user ? ( // se logado, mostrar nome e link para dashboard, se não, mostrar botão de login
+                            <button
+                                type="button"
+                                onClick={() => setLoginOpen(true)}
+                                className="menu-login-button"
+                            >
+                                Entrar
+                            </button>
+                        ) : (
+                            <>
+                                <span className="external-menu user-menu">
+                                    Olá, {user.name}
+                                </span>
+                            </>
+                        )}
+
                         <Link href="/">Home</Link>
                         <Link href="/carrinho">Carrinho</Link>
-                        <Link href="/dashboard">Meus Anúncios</Link>
                         <Link href="/categorias">Categorias</Link>
-                        <button
-                            type="button"
-                            onClick={() => setLoginOpen(true)}
-                            className="menu-login-button"
-                        >
-                            Entrar
-                        </button>
+
+                        {!user ? (
+                            null
+                        ) : (
+                            <>
+                                <Link href="/dashboard">Meus Anúncios</Link>
+                                <button
+                                    type="button"
+                                    onClick={logout}
+                                    className="external-menu menu-login-button"
+                                >
+                                    Sair
+                                </button>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
+
             <LoginModal
                 isOpen={loginOpen}
                 onClose={() => setLoginOpen(false)}

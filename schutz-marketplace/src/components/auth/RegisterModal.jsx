@@ -15,12 +15,12 @@ export default function RegisterModal({ isOpen, onClose, onOpenLogin }) {
 
     function handleOverlayClick(e) {
         if (e.target === e.currentTarget) {
-            onClose();
+            onClose(); // sumir quando clicar fora da caixa do modal
         }
     }
 
     async function handleSubmit(e) {
-        e.preventDefault();
+        e.preventDefault(); // não recarregar a página ao enviar o formulário
 
         setLoading(true);
         setMessage("");

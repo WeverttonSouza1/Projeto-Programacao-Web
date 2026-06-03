@@ -1,11 +1,11 @@
 nav {
-font-family: 'Courier New', Courier, monospace;
-background: #4c288f;
-/* 4c288f #4d3a73*/
-padding: 15px;
-display: flex;
-justify-content: space-around;
-/*box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);*/
+    font-family: 'Courier New', Courier, monospace;
+    background: #4c288f;
+    /* 4c288f #4d3a73*/
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    /*box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);*/
 }
 
 nav a {
@@ -40,12 +40,32 @@ nav a {
     display: flex;
 }
 
+#external-menu span,
 #external-menu a,
 #external-menu a:visited,
 #external-menu :where(a) {
     color: white;
     text-decoration: none;
     padding: 6px 4px;
+}
+
+#external-menu a:hover,
+#external-menu button:hover {
+    text-decoration: underline;
+    color: #ff9d00;
+    transition: color 0.2s;
+}
+
+.menu-login-button {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #4c288f;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: background-color 0.2s;
 }
 
 .schutz-navbar {
@@ -169,7 +189,7 @@ body.dark .schutz-search-hotkey {
 }
 
 body.dark .schutz-link {
-
+    
 }
 
 .schutz-link:hover {
@@ -205,6 +225,7 @@ footer .text-logo{
 
 .schutz-btn-anunciar {
     font-family: 'Courier New', Courier, monospace;
+    border: none;
     background-color: #4c288f;
     color: #fff;
     text-decoration: none;
@@ -221,7 +242,7 @@ footer .text-logo{
 }
 
 .schutz-carrinho {
-
+    
 }
 
 /* Botões de Ícone (Carrinho e Menu) */

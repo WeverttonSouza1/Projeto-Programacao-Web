@@ -6,7 +6,7 @@
 }
 
 div.container-title {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', 'work-sans', sans-serif;;
     font-size: 1.2em;
     color: #ff9d00;
     margin-bottom: 20px;
@@ -146,6 +146,7 @@ body.dark .category-card {
     /* Regras para não quebrar o layout */
     display: -webkit-box;
     -webkit-line-clamp: 2; /* Limita em exatas 2 linhas */
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
