@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev", // não colocar turbopack, quebra fontes de letras
+    "dev": "next dev", # não colocar turbopack, quebra fontes de letras
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
