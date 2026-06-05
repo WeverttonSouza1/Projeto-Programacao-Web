@@ -29,7 +29,7 @@ export default async function GamesListPage() {
                 </span>
             </nav>
 
-            {/* 2. Barra de Pesquisa Específica da GGMAX */}
+            {/* 2. Barra de Pesquisa Específica*/}
             <div className="search-header">
                 <div className="search-wrapper">
                     <input 
